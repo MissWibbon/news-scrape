@@ -1,10 +1,12 @@
 // Dependencies
 var express = require("express");
-var mongojs = require("mongojs");
+//var mongojs = require("mongojs");
+var mongoose = require("mongoose");
+
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
-mongoose.connect(MONGODB_URI);
+var db = mongoose.connect(MONGODB_URI);
 
 
 // Initialize Express
@@ -19,7 +21,7 @@ var databaseUrl = "zoo";
 var collections = ["animals"];
 
 // Use mongojs to hook the database to the db variable
-var db = mongojs(databaseUrl, collections);
+//var db = mongojs(databaseUrl, collections);
 
 // This makes sure that any errors are logged if mongodb runs into an issue
 db.on("error", function(error) {
